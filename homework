@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+class Matrix
+{
+    int a[3][4] = { 3,5,5,1,4,6,4,8,1,9,9,6 };
+public:     
+    Matrix() {};
+    friend Matrix operator +(Matrix a, Matrix b);
+    Matrix operator -(Matrix a);
+    void show();
+};
+Matrix operator +(Matrix x, Matrix y)
+{   
+    Matrix z;
+    for (int i = 0; i < 3; i++) 
+    {
+        for (int j = 0; j < 4; j++) 
+        {
+            z.a[i][j] = x.a[i][j] + y.a[i][j];
+        }
+    }
+    return z;
+}
+Matrix Matrix::operator -(Matrix x)
+{
+    Matrix z;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            z.a[i][j] = a[i][j] - x.a[i][j];
+        }
+    }
+    return z;
+}
+void Matrix::show() 
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+}
+int main() 
+{
+    Matrix a, b, results;
+    results = a + b;
+    results.show();
+    cout << endl;
+    results = a - b;
+    results.show();
+
+}
